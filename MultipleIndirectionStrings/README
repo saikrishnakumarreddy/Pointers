@@ -1,1 +1,50 @@
+int main(int argc, char **argv) {
+        char *pc;                       // a pointer to a character
+        char **ppc;                     // a pointer to a pointer to a character
 
+        printf ("multiple indirection example\n");
+
+        // initialize our string array
+        words[0] = "zero";
+        words[1] = "one";
+        words[2] = "two";
+        for (int i = 0; i < LENGTH; i++) {
+                printf("%s\n", words[i]);
+        }
+
+
+        /*
+        * B: a pointer to an array of strings
+        *    - the same as a pointer to a pointer to a character
+        *
+        */
+
+        printf("words address %d\n",words);
+        ppc = words;                                                    // initialize the pointer to a pointer to a character
+
+        for (int i = 0; i < LENGTH; i++) {              // loop over each string
+                ppc = words+i;
+                printf("ppc %d %d\n",i, ppc);
+                pc = *ppc;
+                printf("Array address is %d   %d\n",i, pc);
+                while (*pc != 0) {                                      // process each character in a string
+                        //printf("%c ", *pc);                             // print out each character of the string individually
+                        pc += 1;
+                }
+                printf("\n");
+        }
+
+
+
+/*******  OUTPUT        ********/
+words address 6295648
+ppc 0 6295648
+Array address is 0   4196193
+
+ppc 1 6295656
+Array address is 1   4196198
+
+ppc 2 6295664
+Array address is 2   4196202
+
+/*******  OUTPUT        ********/
